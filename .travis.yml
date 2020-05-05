@@ -3,23 +3,23 @@ services:
   - docker
 
 before_install:
-  - docker build -t nabaraj/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t nabaraj123/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run nabaraj/react-test npm test -- --coverage
+  - docker run nabaraj123/react-test npm test -- --coverage
 
 after_success:
-  - docker build -t nabaraj/multi-client ./client
-  - docker build -t nabaraj/multi-nginx ./nginx
-  - docker build -t nabaraj/multi-server ./server
-  - docker build -t nabaraj/multi-worker ./worker
+  - docker build -t nabaraj123/multi-client ./client
+  - docker build -t nabaraj123/multi-nginx ./nginx
+  - docker build -t nabaraj123/multi-server ./server
+  - docker build -t nabaraj123/multi-worker ./worker
   # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take those images and push them to docker hub
-  - docker push nabaraj/multi-client
-  - docker push nabaraj/multi-nginx
-  - docker push nabaraj/multi-server
-  - docker push nabaraj/multi-worker
+  - docker push nabaraj123/multi-client
+  - docker push nabaraj123/multi-nginx
+  - docker push nabaraj123/multi-server
+  - docker push nabaraj123/multi-worker
 
 # deploy:
 #   provider: elasticbeanstalk
